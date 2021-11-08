@@ -17,6 +17,8 @@ const compression = require('compression');
 
 
 const app = express();
+
+app.enable('trust proxy');
 // middle wear because it is in the middle of the request and response
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
