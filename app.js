@@ -13,6 +13,8 @@ const AppError = require('./utils/appError');
 const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
+
 
 const app = express();
 // middle wear because it is in the middle of the request and response
@@ -57,9 +59,10 @@ app.use(
 
 app.use(express.static(`${__dirname}/public`));
 
+app.use(compression());
+
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  //console.log(req.cookies);
   next();
 });
 
